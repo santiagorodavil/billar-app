@@ -1,38 +1,94 @@
-.App {
-  text-align: center;
+.row-header{
+  margin:0px auto;
+  padding:0px auto;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.row-content {
+  margin:0px auto;
+  padding: 50px 0px 50px 0px;
+  border-bottom: 1px ridge;
+  min-height:400px;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.navbar-dark {
+  /*background-color:  #65526b;*/
+  background-color: #29776F;
+}
+.container-menu1{
+  /*background-color: #512DA8;
+  background-color: #737664;*/
+  background-color: #29776F;
+  width: 100%;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.container-login {
   display: flex;
-  flex-direction: column;
-  align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  align-items: center;
+  height: 100vh;
+}
+.login-form {
+  background-color: #191b24;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  padding: 20px;
+  width: 300px;
+  text-align: center;
+  color:#f1f2e8;
 }
 
-.App-link {
-  color: #61dafb;
+.login-form input {
+  width: 100%;
+  padding: 10px;
+  margin: 5px 0;
+  border: 1px solid #6c6b85;
+  border-radius: 3px;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.login-form button {
+  width: 100%;
+  padding: 10px;
+  background-color: #201f1f;
+  color: #f1f2e8;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+.login-form button:hover {
+  background-color: #65526b;
+}
+
+.login-form .input-container {
+  margin-bottom: 15px;
+}
+
+body {
+  /*background-color: #6c6b85;*/
+  /*background-color: #737664;
+  background-color: #65526b;*/
+  background-color: #422A43;
+  font-family: Arial, sans-serif;
+}
+
+.aside-bar{
+  width: 100px;
+  background-color: #422a43;
+
+}
+.bg-card{
+  background-color: #EDEB9A;
+}
+.card-inputs{
+  background-color: #EDEB9A;
+  border: 1px solid #C8BA90;
+}
+.card-inputs:active, .card-inputs:hover{
+  background-color: #C8BA90;
+}
+.nav-link{
+  color:white;
+}
+.nav-link:hover{
+  color:yellow;
 }
