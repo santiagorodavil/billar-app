@@ -62,5 +62,5 @@ export const MESAS =
         imagen:"/assets/pool.jpg",
         tiempo: "0:00",
         factura: false
-    },
+    }
 ]
