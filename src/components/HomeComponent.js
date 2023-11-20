@@ -1,19 +1,30 @@
 import React from "react";
-import {Card, CardTitle, CardBody, CardImg, CardText, Button} from 'reactstrap';
+import {Card, CardTitle, CardBody, CardImg, Button} from 'reactstrap';
 import { Link } from "react-router-dom";
 
-function RenderMesas({mesa}){    
-    console.log(mesa.factura);
+function RenderMesas({mesa}){
     return(
-        <Card>
+        <Card className="bg-card">
             <CardImg top width="100%" src={mesa.imagen}/>
             <CardBody>
                 <CardTitle>Mesa {mesa.id +1}</CardTitle>
-                <CardText>{mesa.tipo}</CardText>
+                {/* Habilita los botones de factura unicamente si hay algo para cobrar (si mesa.factura=true)*/}
+                {mesa.factura && ( <Link to={`/mesa${mesa.id +1}/factura`}>
+                                        <Button disabled={!mesa.factura}
+                                                size="lg" className="card-inputs">
+                                            Facturar
+                                        </Button>
+                                    </Link>)
+                }
+                {!mesa.factura && ( <Button disabled={!mesa.factura}
+                                            size="lg" className="card-inputs">
+                                        disable
+                                    </Button>)
+                }
 
-                <Button disabled={!mesa.factura} color="primary" size="lg">Factura</Button>
-                {' '}
-                <Button size="lg" type="link" href="/mesas">Ver Mesa</Button>
+                <Link to={`/mesa${mesa.id +1}`}>                    
+                    <Button size="lg" className="other-card-inputs">Ver Mesa</Button>
+                </Link>
             </CardBody>
         </Card>
     );
@@ -21,7 +32,7 @@ function RenderMesas({mesa}){
 const Home = (props)=>{
     const mesas= props.mesas.map((mesa)=>{
         return(
-            <div key={mesa.id} className="col-9 col-md-3 m-3">
+            <div key={mesa.id} className="col-11 col-md-3 m-4">
                 <RenderMesas mesa={mesa}/>
             </div>
         );
