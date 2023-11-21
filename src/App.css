@@ -62,6 +62,11 @@ h2{
   font-size: 40px;
   padding: 5%;
 }
+.h3-info-mesa{
+  color:#363b48;
+  font-size: 25px;
+  padding: 5%;
+}
 /********************************************************************************/
 :root{
   --primary:#46526E;
@@ -115,4 +120,6 @@ body {
 }
 
 /* Info mesas styles*/
-
+.link-sin-linea {
+  text-decoration: none;
+}

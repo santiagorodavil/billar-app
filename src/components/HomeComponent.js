@@ -12,7 +12,7 @@ function RenderMesas({mesa}){
                 {mesa.factura && ( <Link to={`/mesas/${mesa.id +1}/factura`}>
                                         <Button disabled={!mesa.factura}
                                                 size="lg" className="card-inputs">
-                                            Facturar
+                                            Ver Factura
                                         </Button>
                                     </Link>)
                 }
@@ -21,7 +21,7 @@ function RenderMesas({mesa}){
                                         Libre
                                     </Button>)
                 }
-
+                {' '}
                 <Link to={`/mesas/${mesa.id +1}`}>                    
                     <Button size="lg" className="other-card-inputs">Ver Mesa</Button>
                 </Link>
@@ -30,9 +30,10 @@ function RenderMesas({mesa}){
     );
 }
 const Home = (props)=>{
+    //Recorre todas las mesas y a cada una le crea un componente <RendeMesas/>
     const mesas= props.mesas.map((mesa)=>{
         return(
-            <div key={mesa.id} className="col-11 col-md-3 m-4">
+            <div key={mesa.id} className="col-11 col-md-4 ">
                 <RenderMesas mesa={mesa}/>
             </div>
         );

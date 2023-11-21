@@ -12,7 +12,7 @@ export const MESAS =
         tipo: "Billar",
         imagen:"/assets/billar.jpg",
         tiempo: "0:00",
-        factura: true
+        factura: false
     },
     {
         id:2,

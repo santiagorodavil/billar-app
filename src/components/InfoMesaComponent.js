@@ -1,34 +1,55 @@
-import React from "react";
-import { Input } from "reactstrap";
+import React,{useState} from "react";
+import { Input, Button } from "reactstrap";
+import { Link } from "react-router-dom";
 
 const InfoMesa =(props)=>{
+    const [relojActivo, setRelojActivo] = useState(false);
     const Prueba = ()=>{
         return(
             <div className="container">
-                Mesa #{props.mesa.id +1}
+                <div className="row">
+                    <div className="col-md-6">
+                        <h2>Mesa #{props.mesa.id +1}</h2> 
+                    </div>
+                    <div className="col-md-4 h3-info-mesa">
+                        {props.mesa.tipo}
+                    </div>
+                </div>
+                
             </div>
         );
     };    
 
+    const StartStopClock =()=>{
+        setRelojActivo(!relojActivo);
+        props.mesa.factura=true;
+    };
+
+    const HandleFaturar = ()=>{
+        if(props.mesa.factura){
+            props.mesa.factura=false;
+            if(relojActivo) setRelojActivo(!relojActivo);
+            alert("Se ha facturado su compra!");
+        }
+    };
+
     return(
         <div className="container bg-card">
             <div className="row">
-                {/* Mitad de la izquierda (botones titulo)*/}
+                {/* Mitad de la izquierda (botones y encabezado)*/}
                 <div className="col-md-6 ">
-                    <h2>{<Prueba/>}</h2>
+                    {<Prueba/>}
                     <div className="row">
                         <div className=" col-10 m-3">
-                            <Input className="card-inputs" type="button" value="Iniciar Tiempo" placeholder="Start Time"/>
+                            <Input className="card-inputs" type="button" onClick={StartStopClock}
+                                   value={relojActivo ? 'Terminar Tiempo': 'Iniciar Tiempo'}placeholder="Start Time"/>
                         </div>
                     </div>
                     <div className="row">
                         <div className="col-10 m-3">
-                            <Input className="card-inputs" type="button" value="Terminar Tiempo" placeholder="End Time"/>
-                        </div>
-                    </div>
-                    <div className="row">
-                        <div className="col-10 m-3">
-                            <Input className="card-inputs" type="button" value="Añadir Consumo" placeholder="End Time"/>
+                            <Link to={`/mesas/${props.mesa.id+1}/consumo`} className="link-sin-linea">
+                                <Input className="card-inputs" type="button" value="Añadir Consumo" placeholder="End Time"/>
+                            </Link>
                         </div>
                     </div>
 
@@ -38,7 +59,16 @@ const InfoMesa =(props)=>{
                     Tiempo
                 </div>
             </div>
-            sdf
+            <div className="row">
+                <div className="col-9 m-3">
+                    <Link to={"/home"}>
+                        <Button className="other-card-inputs" size="lg">Volver</Button>
+                    </Link>
+                </div>
+                <div className=" text-right col-2 m-3">
+                    <Button className="card-inputs" size="lg" onClick={HandleFaturar}>Facturar</Button>
+                </div>
+            </div>
 
         </div>
     );

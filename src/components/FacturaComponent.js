@@ -26,7 +26,6 @@ class Factura extends Component{
     render(){
         return(
             <div className="col-12 col-md-9">
-                <h1>Pagina de mesas</h1>
                 <Card className="bg-card">
                     <CardBody>
                         <CardTitle>

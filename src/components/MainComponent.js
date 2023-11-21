@@ -28,7 +28,6 @@ class Main extends Component{
             return(
                 <InfoMesa mesa={this.state.mesas.filter((mesa)=> (mesa.id+1 === parseInt(location.mesaId)))[0]}/>
             )
-            //console.log(this.state.mesas.filter((mesa)=> (mesa.id+1 === parseInt(location.mesaId))));
         } 
         return(
             <div>
@@ -37,6 +36,7 @@ class Main extends Component{
                     <Route path="/home" Component={()=> <Home mesas={this.state.mesas}/>}/>
                     <Route path="/mesas" Component={Factura}/>
                     <Route path="/mesas/:mesaId" Component={MesaConId}/>
+                    <Route path="/mesas/:mesaId/consumo" Component={Factura}/>
                 </Routes>
             </div>
         );
