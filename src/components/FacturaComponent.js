@@ -1,7 +1,7 @@
 import React, {Component} from "react";
 import {Card, CardBody, cardText,Form, FormGroup, Label, Input, Col, CardTitle} from 'reactstrap';
 
-class Tables extends Component{
+class Factura extends Component{
     constructor(props){
         super(props);
         this.state={
@@ -76,4 +76,4 @@ class Tables extends Component{
     }
 }
 
-export default Tables;
+export default Factura;

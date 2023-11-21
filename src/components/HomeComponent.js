@@ -9,7 +9,7 @@ function RenderMesas({mesa}){
             <CardBody>
                 <CardTitle>Mesa {mesa.id +1}</CardTitle>
                 {/* Habilita los botones de factura unicamente si hay algo para cobrar (si mesa.factura=true)*/}
-                {mesa.factura && ( <Link to={`/mesa${mesa.id +1}/factura`}>
+                {mesa.factura && ( <Link to={`/mesas/${mesa.id +1}/factura`}>
                                         <Button disabled={!mesa.factura}
                                                 size="lg" className="card-inputs">
                                             Facturar
@@ -18,11 +18,11 @@ function RenderMesas({mesa}){
                 }
                 {!mesa.factura && ( <Button disabled={!mesa.factura}
                                             size="lg" className="card-inputs">
-                                        disable
+                                        Libre
                                     </Button>)
                 }
 
-                <Link to={`/mesa${mesa.id +1}`}>                    
+                <Link to={`/mesas/${mesa.id +1}`}>                    
                     <Button size="lg" className="other-card-inputs">Ver Mesa</Button>
                 </Link>
             </CardBody>
