@@ -7,6 +7,9 @@ const InfoMesa =(props)=>{
     const [relojActivo, setRelojActivo] = useState(props.mesa.timeRunning);
     const [renderTiempo, setRenderTiempo] = useState(0);
     /* - Revisar que el tiempo siga moviendose incluso fuera de esta pagina (ver el componentDidupdate() dentro del Main)
+       - Probar usando .now y luego calcular los segundos que han pasado desde ese momento hasta la facturación:
+          *Ver si se pueden sumar todos los start/stop realizados por mesa (cada inicio de tiempo debe tener su .now)
+          *Hacer SetState al now(con la sum de todos los start/stop) para que se pueda tener en todo lado el mismo tiempo
     ---
        - Otra opcion es ver si se puede manejar desde useEffect pero en Home Component (creo que es mucho mejor)
        Esta implementacion tiene bugs. Cuando se entra a otra mesa o a  cualquier factura, el tiempo se detiene
@@ -19,6 +22,7 @@ const InfoMesa =(props)=>{
           interval = setInterval(() => {
             props.mesa.tiempo +=1;
             setRenderTiempo (props.mesa.tiempo);
+            props.setTime(props.mesa.id, props.mesa.tiempo);
           }, 1000); // Update time every second (1000ms)
         } else {
           clearInterval(interval);

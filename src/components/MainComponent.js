@@ -13,9 +13,41 @@ class Main extends Component{
     constructor(props){
         super(props);
         this.state ={
-            mesas:MESAS
+            mesas:MESAS,
+            interval:null
         }
+        this.StartStopTiempo = this.StartStopTiempo.bind(this);
     }
+
+    componentDidUpdate(){
+        function checkTime(mesaAct){
+            if(mesaAct.timeRunning){
+                //console.log("siiiiu");                 
+            }
+        }
+        const mesa = this.state.mesas.map((mesa)=>{
+            if(mesa.timeRunning){
+                return(
+                    checkTime(mesa)
+                );
+            }
+            
+        });
+        return(mesa);
+    }
+
+
+    //Funcion que cambia el estado del valor de los segundos de una mesa
+    StartStopTiempo(idMesa, tiempo){
+            const newState = this.state.mesas.map(mesa=>{
+                if(mesa.id === idMesa){
+                    return{...mesa, tiempo:tiempo};
+                }
+                return mesa;
+            });
+            this.setState({mesas:newState});
+    }
+
     render(){
         const MesaIdConsumo =()=>{
             const location = useParams();
@@ -32,7 +64,8 @@ class Main extends Component{
 
             //Se le pasa por parametro la mesa que tiene el mismo id del boton clickeado
             return(
-                <InfoMesa mesa={this.state.mesas.filter((mesa)=> (mesa.id+1 === parseInt(location.mesaId)))[0]}/>
+                <InfoMesa mesa={this.state.mesas.filter((mesa)=> (mesa.id+1 === parseInt(location.mesaId)))[0]}
+                          setTime={this.StartStopTiempo}/>
             )
         }
         return(
@@ -51,3 +84,6 @@ class Main extends Component{
 }
 
 export default Main;
+
+
+//Para cuando se tenga el servidor usar: ComponentDidMount (Se llama solo una vez)
