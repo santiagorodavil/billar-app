@@ -1,13 +1,39 @@
-import React from "react";
+import React,{useEffect,useState    } from "react";
 import {Card, CardTitle, CardBody, CardImg, Button} from 'reactstrap';
 import { Link } from "react-router-dom";
 
 function RenderMesas({mesa}){
+    const [renderTiempo, setRenderTiempo] = useState(0);
+    useEffect(() => {
+        let interval;
+    
+        if (mesa.timeRunning) {
+          interval = setInterval(() => {
+            mesa.tiempo +=1;
+            setRenderTiempo (mesa.tiempo);
+          }, 1000); // Update time every second (1000ms)
+        } else {
+          clearInterval(interval);
+        } 
+        return () => clearInterval(interval); // Clean up interval on unmount or state change
+    }, [mesa.timeRunning]);
+
     return(
-        <Card className="bg-card">
+        <Card className="bg-card card-margen">
             <CardImg top width="100%" src={mesa.imagen}/>
             <CardBody>
-                <CardTitle>Mesa {mesa.id +1}</CardTitle>
+                <CardTitle>
+                    <div className="container">
+                        <div className="row">
+                            <div className="col-md-6">
+                                <h3>Mesa {mesa.id +1}</h3>
+                            </div>
+                            <div className="col-md-6">
+                                <h3>{mesa.tiempo}</h3>
+                            </div>
+                        </div>
+                    </div>
+                </CardTitle>
                 {/* Habilita los botones de factura unicamente si hay algo para cobrar (si mesa.factura=true)*/}
                 {mesa.factura && ( <Link to={`/mesas/${mesa.id +1}/factura`}>
                                         <Button disabled={!mesa.factura}
@@ -29,7 +55,7 @@ function RenderMesas({mesa}){
         </Card>
     );
 }
-const Home = (props)=>{
+const Home = (props)=>{    
     //Recorre todas las mesas y a cada una le crea un componente <RendeMesas/>
     const mesas= props.mesas.map((mesa)=>{
         return(

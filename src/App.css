@@ -58,12 +58,13 @@
 }
 
 h2{
-  color:#363b48;
+  /*color:#363b48;*/
+  color: var(--primary);
   font-size: 40px;
   padding: 5%;
 }
 .h3-info-mesa{
-  color:#363b48;
+  color:var(--primary);
   font-size: 25px;
   padding: 5%;
 }
@@ -118,7 +119,18 @@ body {
 .other-card-inputs{
   background-color: var(--secondary);
 }
+.other-card-inputs2{
+  text-align: center;
+  background-color: var(--other-color2);
+}
+.card-margen{
+  margin-bottom: 10px;
+  margin-top: 5px;
 
+}
+.centered{
+  text-align: center;
+}
 /* Info mesas styles*/
 .link-sin-linea {
   text-decoration: none;

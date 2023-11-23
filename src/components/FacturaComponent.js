@@ -1,4 +1,5 @@
 import React, {Component} from "react";
+import { Link } from "react-router-dom";
 import {Card, CardBody, cardText,Form, FormGroup, Label, Input, Col, CardTitle} from 'reactstrap';
 
 class Factura extends Component{
@@ -24,12 +25,22 @@ class Factura extends Component{
         this.setState({cantidad: cant})
     }
     render(){
+        console.log(this.props.mesa);
         return(
-            <div className="col-12 col-md-9">
+            <div className="col-12 col-md-9 card-margen">
                 <Card className="bg-card">
                     <CardBody>
                         <CardTitle>
-                            <h3>Añadir a la factura</h3>
+                            <div className="container">
+                                <div className="row">
+                                    <div className="col-md-5 other-card-inputs2">                                        
+                                        <h3>Añadir a la factura</h3>
+                                    </div>
+                                    <div className="col-md-7 centered">
+                                        <h3>Mesa #{this.props.mesa.id+1}</h3>
+                                    </div>
+                                </div>
+                            </div>
                         </CardTitle>
                             <Form>
                                 <FormGroup row>
@@ -59,8 +70,11 @@ class Factura extends Component{
                                 </FormGroup>   
                                 <FormGroup row>
                                     <Col md={{size:3, offset:2}}>
+                                        <Link to={`/mesas/${this.props.mesa.id+1}`} className="link-sin-linea">
                                         <Input className="card-inputs" type="button" name="volvermesa"
                                         value="Cancelar"/>
+                                        </Link>
+
                                     </Col>                
                                     <Col md={{size:3, offset:2}}>
                                         <Input className="card-inputs" type="button" name="cobrar"
